@@ -1,0 +1,62 @@
+<style>
+    td,th{
+    border: 1px solid black;
+    }
+    table{
+        border-collapse: collapse;
+        width: 20%;
+        height: 20%;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: center;
+    }
+</style>
+<button (click)="ProductDiscount()">Products with discount</button>
+<button (click)="ProductNoDiscount()">product without discounts</button>
+
+
+
+<!-- 
+<router-outlet></router-outlet> -->
+
+<h3 *ngIf="Discount=='No Discount' else isDiscount"></h3>
+
+    <ng-template #isDiscount>
+        <h3 style="text-align: center;">
+            We offer an explicit discount of: {{Discount |percent}}
+        </h3>
+    </ng-template>
+<hr>
+<br>
+<div style="display: flex;">
+    <select style="margin-left: 5%;">
+    <option  value="category.id" *ngFor="let category of CategoryList">{{category.Name}}</option>
+    </select>
+
+    <label style="margin-left: 60%;">Enter Your Name:</label>
+    <input type="text" [(ngModel)]=" message" #textInput/>
+    {{message}}
+</div>
+<br>
+<div *ngIf="IsPurshased==false; then thenBlock; else elseBlock">
+</div>
+<ng-template #thenBlock>
+    <div class="container" >
+        <div class="row" >
+          <div class="col-4" class="card" style="width:400px;margin-left: 20px;" value="productid" *ngFor="let product of ProductList" >
+            <img class="card-img-top" src={{product?.Img}} alt="Card image">
+            <h4 class="card-title">{{product?.Name}}</h4>
+                <p class="card-title">{{product?.Price}}$</p>
+                <p class="card-title">{{product?.Quantity+" pieces left"}}</p>
+                <button type="btn" class="btn btn-light" (click)="showMessage()">Buy</button>
+          </div>
+          
+        </div>
+      </div>
+</ng-template>
+
+<ng-template #elseBlock>
+    <h3 style="background-color: rgb(44, 44, 154);color: white;width: 60%;">Thanks for purchasing from our Store {{message}}</h3>
+    
+</ng-template>
+
+

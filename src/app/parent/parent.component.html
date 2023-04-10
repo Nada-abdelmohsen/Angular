@@ -1,0 +1,11 @@
+<p>parent works!</p>
+ <app-child (childEvent)="messageFromChild=$event" ></app-child> 
+ <br>
+ <div class="col-4" class="card" style="width:400px;margin-left: 20px;" value="productid" *ngFor="let product of messageFromChild" >
+    <img class="card-img-top" src={{product?.Img}} alt="Card image">
+    <h4 class="card-title">{{product?.Name}}</h4>
+        <p class="card-title">{{product?.Price}}$</p>
+        <p class="card-title">{{product?.Quantity+" pieces left"}}</p>
+  </div>
+
+ <!--[parentData]="message"-->

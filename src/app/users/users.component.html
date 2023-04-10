@@ -1,0 +1,13 @@
+<app-header></app-header>
+<p>users works!</p>
+
+    <div class="container" >
+        <div class="row" >
+          <div class="col-4" class="card" style="width:400px;margin-left: 20px;" value="Id" *ngFor="let user of list" >
+            <h4 class="card-title">{{user?.name}}</h4>
+                <p class="card-title">{{user?.username}}</p>
+                <p class="card-title">{{user?.email}}</p>
+          </div>
+        </div>
+    </div>
+<app-footer></app-footer>

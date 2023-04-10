@@ -1,0 +1,18 @@
+<p>comments works!</p>
+<h1>you select comment of post {{posttId}}</h1>
+<div>
+  <div *ngFor="let comment of commentsList">
+    
+    <div class="card-body">
+      
+      <h5 class="card-title">{{comment.id}}</h5>
+      
+      <p class="text-muted">{{comment.name}}</p>
+      <p class="text-muted">{{comment.email}}</p>
+
+      <p class="text-muted">{{comment.body}}</p>
+
+    </div>
+  </div>
+</div>
+

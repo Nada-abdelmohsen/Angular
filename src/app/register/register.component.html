@@ -1,0 +1,81 @@
+<p>Registration Form</p>
+
+<div class="container">
+  <form #userForm="ngForm" novalidate (ngSubmit)="submitData()">
+    {{userForm.value |json}}
+    <br>
+    {{userModel |json}}
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text"  pattern="[A-Za-z]+"  [(ngModel)]="userModel.name" name="textName" required [class.is-invalid]="nameuser.invalid&&nameuser.touched" #nameuser="ngModel"  class="form-control">
+      <div *ngIf="nameuser.errors&&nameuser.touched">
+        <small class="text-danger" *ngIf="nameuser.errors['required']">Name is required</small>
+        <small class="text-danger" *ngIf="nameuser.errors['pattern']">Name must contain characters only </small>
+      </div>
+      <div *ngIf="nameuser.valid">
+        <small class="text-success">Name is valid</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [(ngModel)]="userModel.email" name="textEmail" #emailuser="ngModel" required [class.is-invalid]="emailuser.invalid&&emailuser.touched"  class="form-control">
+      <div *ngIf="emailuser.errors&&emailuser.touched">
+        <small class="text-danger" *ngIf="emailuser.errors['required']">Email is required</small>
+        <small class="text-danger" *ngIf="emailuser.errors['pattern']">Email must contain @ and . ex: aaa@bb.com </small>
+      </div>
+      <div *ngIf="emailuser.valid">
+        <small class="text-success">Email is valid</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="userModel.password" name="pass" #passworduser="ngModel" required [class.is-invalid]="passworduser.invalid&&passworduser.touched" class="form-control">
+      <div *ngIf="passworduser.errors&&passworduser.touched">
+        <small class="text-danger" *ngIf="passworduser.errors['required']">Password is required</small>
+        <small class="text-danger" *ngIf="passworduser.errors['pattern']">Password must contain small and capital and special eight characters  </small>
+      </div>
+      <div *ngIf="passworduser.valid">
+        <small class="text-success">Password is valid</small>
+      </div>
+      
+    </div>
+
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="userModel.confirmpass" name="conpass" #confirmpassuser="ngModel" required [class.is-invalid]="confirmpassuser.invalid&&confirmpassuser.touched" class="form-control">
+      <div *ngIf="confirmpassuser.errors&&confirmpassuser.touched">
+        <small class="text-danger" *ngIf="confirmpassuser.errors['required']">Confirm Password is required</small>
+        <small class="text-danger" *ngIf="confirmpassuser.errors['pattern']">Confirm Password must contain small and capital and special eight characters </small>
+      </div>
+      <div *ngIf="confirmpassuser.valid">
+        <small class="text-success">Confirm Password is valid</small>
+      </div>
+    </div>
+<br>
+    <div class="form-group">
+      <label>where you hear about us</label>
+      <br>
+      <select class="custom-select"  [(ngModel)]="userModel.contact" name="dropdownlist" #contactuser="ngModel" required [class.is-invalid]="contactuser.invalid&&contactuser.touched">
+        
+        <option *ngFor="let c of contact">
+          {{c}}
+        </option>
+      
+      </select>
+      <div *ngIf="contactuser.errors&&contactuser.touched">
+        <small class="text-danger" *ngIf="contactuser.errors['required']">contact is required</small>
+      </div>
+      <div *ngIf="contactuser.valid">
+        <small class="text-success">Contact is valid</small>
+      </div>
+    </div>
+<br>
+      <input  class="btn btn-primary" [disabled]="userForm.form.invalid" type="submit" value="register"/>
+    
+  </form>
+
+</div>
+
+

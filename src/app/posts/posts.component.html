@@ -1,0 +1,17 @@
+<!-- <app-header></app-header> -->
+<p>posts works!</p>
+
+<!-- 
+<button *ngFor="let post of posts" (click)="onSelect(dept)">View Post Comments</button>  -->
+
+<div class="container" >
+    <div class="row" >
+      <div class="col-4" class="card" style="width:400px;margin-left: 20px;" value="Id" *ngFor="let post of list" >
+        <h4 class="card-title">{{post?.id}}</h4>
+            <p class="card-title">{{post?.title}}</p>
+            <p class="card-title">{{post?.body}}</p>
+      </div>
+    </div>
+</div>
+
+<!-- <app-footer></app-footer> -->

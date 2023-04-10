@@ -1,0 +1,20 @@
+<app-header></app-header>
+<p>home works!</p>
+<app-products></app-products> 
+<button type="btn" class="btn btn-success" (click)="getData()">Display Data</button>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Img</th>
+        <th>Price</th>
+        <th>Quantity</th>
+       </tr> 
+       <tr  *ngFor="let p of products">
+        <td >{{p.Name}}</td>
+        <td ><img src="{{p.Img}}" alt="" width="150px;"height="150px"></td>
+        <td >{{p.Price}}</td>
+        <td >{{p.Quantity}}</td>
+    </tr>
+</table>
+
+<app-footer></app-footer>
